@@ -1,0 +1,126 @@
+{
+  "device": "cpu",
+  "seed": 42,
+  "epochs": 5,
+  "batch_size": 128,
+  "learning_rate": 0.001,
+  "manual_flops": {
+    "MLP first Linear (784 -> 256)": 401408,
+    "CNN first Conv2d (1 -> 16, 28x28)": 225792,
+    "Attention QKV projections (seq=16, d=64)": 393216,
+    "Attention score products (seq=16, d=64)": 32768
+  },
+  "models": {
+    "MLP": {
+      "parameters": 235146,
+      "test_loss": 0.3376834939479828,
+      "test_accuracy": 0.8813,
+      "latency_batch1_ms": 0.047900000936351717,
+      "latency_batch128_ms": 0.17519999892101623,
+      "history": {
+        "train_loss": [
+          0.4904757823120464,
+          0.3518212679906325,
+          0.3138721573742953,
+          0.2871999121015722,
+          0.2689274982235648
+        ],
+        "val_loss": [
+          0.3912257966041565,
+          0.3567885166168213,
+          0.34496422600746157,
+          0.3275720263004303,
+          0.3137497152328491
+        ],
+        "val_accuracy": [
+          0.8588,
+          0.8726,
+          0.8698,
+          0.8804,
+          0.8846
+        ]
+      },
+      "thop": {
+        "available": true,
+        "macs_batch1": 234752,
+        "approx_flops_batch1_if_1mac_2flops": 469504,
+        "params_thop": 235146,
+        "note": "THOP usually reports MACs; approximate FLOPs shown as 2 x MACs."
+      }
+    },
+    "CNN": {
+      "parameters": 20490,
+      "test_loss": 0.2905912488937378,
+      "test_accuracy": 0.8979,
+      "latency_batch1_ms": 0.08770000204094686,
+      "latency_batch128_ms": 3.1017000001156703,
+      "history": {
+        "train_loss": [
+          0.5083012740438635,
+          0.33644213027520614,
+          0.2976199540094896,
+          0.27375855514136227,
+          0.2552292973344976
+        ],
+        "val_loss": [
+          0.3840081394672394,
+          0.3442592320203781,
+          0.31639459884166715,
+          0.2851909207105637,
+          0.2800881134033203
+        ],
+        "val_accuracy": [
+          0.864,
+          0.876,
+          0.8878,
+          0.898,
+          0.899
+        ]
+      },
+      "thop": {
+        "available": true,
+        "macs_batch1": 1031744,
+        "approx_flops_batch1_if_1mac_2flops": 2063488,
+        "params_thop": 20490,
+        "note": "THOP usually reports MACs; approximate FLOPs shown as 2 x MACs."
+      }
+    },
+    "Attention": {
+      "parameters": 70794,
+      "test_loss": 0.44819086322784424,
+      "test_accuracy": 0.8394,
+      "latency_batch1_ms": 0.22620000163442455,
+      "latency_batch128_ms": 1.5444500022567809,
+      "history": {
+        "train_loss": [
+          0.843948743759502,
+          0.550776252373782,
+          0.4840224405462092,
+          0.45158475621830335,
+          0.4241165630860762
+        ],
+        "val_loss": [
+          0.6137666534423828,
+          0.5427540384054184,
+          0.49333087413311005,
+          0.489007191157341,
+          0.4518983696460724
+        ],
+        "val_accuracy": [
+          0.7862,
+          0.8054,
+          0.824,
+          0.8294,
+          0.8348
+        ]
+      },
+      "thop": {
+        "available": true,
+        "macs_batch1": 591488,
+        "approx_flops_batch1_if_1mac_2flops": 1182976,
+        "params_thop": 37514,
+        "note": "THOP usually reports MACs; approximate FLOPs shown as 2 x MACs."
+      }
+    }
+  }
+}
